@@ -1,0 +1,86 @@
+public class Test1 extends java.lang.Object
+{
+    static long UsedInst0ExeNum;
+    static long UsedInst1ExeNum;
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args;
+        long tmpLocal;
+        java.io.PrintStream tmpRef;
+
+        args := @parameter0: java.lang.String[];
+
+        staticinvoke <Test1: void func1(int)>(0);
+
+        staticinvoke <Test1: void func1(int)>(95);
+
+        tmpRef = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("temp$0 = x % 4: ");
+
+        tmpLocal = <Test1: long UsedInst0ExeNum>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(int)>(tmpLocal);
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("temp$1 = x / 4: ");
+
+        tmpLocal = <Test1: long UsedInst1ExeNum>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(int)>(tmpLocal);
+
+        return;
+    }
+
+    public static void func1(int)
+    {
+        int x, temp$0, temp$1;
+        long tmpLocal;
+
+        x := @parameter0: int;
+
+        if x != 0 goto label1;
+
+        goto label3;
+
+     label1:
+        tmpLocal = <Test1: long UsedInst0ExeNum>;
+
+        temp$0 = x % 4;
+
+        tmpLocal = tmpLocal + 1L;
+
+        <Test1: long UsedInst0ExeNum> = tmpLocal;
+
+        if temp$0 != 0 goto label2;
+
+        goto label3;
+
+     label2:
+        tmpLocal = <Test1: long UsedInst1ExeNum>;
+
+        temp$1 = x / 4;
+
+        tmpLocal = tmpLocal + 1L;
+
+        <Test1: long UsedInst1ExeNum> = tmpLocal;
+
+        x = temp$1;
+
+        goto label1;
+
+     label3:
+        return;
+    }
+
+    public void <init>()
+    {
+        Test1 this;
+
+        this := @this: Test1;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}

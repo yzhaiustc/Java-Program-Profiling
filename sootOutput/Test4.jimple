@@ -1,0 +1,52 @@
+public class Test4 extends java.lang.Object
+{
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args;
+        int x, temp$1;
+        long tmpLocal;
+        java.io.PrintStream tmpRef;
+
+        args := @parameter0: java.lang.String[];
+
+        x = 10;
+
+     label1:
+        temp$1 = x + 1;
+
+        x = temp$1;
+
+        if temp$1 < 40 goto label1;
+
+        goto label2;
+
+     label2:
+        tmpRef = <java.lang.System: java.io.PrintStream out>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("temp$0 = x % 4: ");
+
+        tmpLocal = <Test1: long UsedInst0ExeNum>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(int)>(tmpLocal);
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("temp$1 = x / 4: ");
+
+        tmpLocal = <Test1: long UsedInst1ExeNum>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(int)>(tmpLocal);
+
+        return;
+    }
+
+    public void <init>()
+    {
+        Test4 this;
+
+        this := @this: Test4;
+
+        specialinvoke this.<java.lang.Object: void <init>()>();
+
+        return;
+    }
+}
