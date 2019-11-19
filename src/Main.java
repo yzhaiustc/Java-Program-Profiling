@@ -255,7 +255,111 @@ public class Main {
     					for(Unit essx : used){
     						int flag = 0;
     						for (ValueBox box : essx.getUseBoxes()){
-    							for(Value y: ness2){
+SootClass sootClass = Scene.v().loadClassAndSupport("Test2");
+	    sootClass.setApplicationClass();
+	    List<SootMethod> tmp  = sootClass.getMethods();
+        ListIterator<SootMethod> iterator = tmp.listIterator(); 
+        while (iterator.hasNext()) {
+        	SootMethod ite = iterator.next();
+        	System.out.println("Method:"+ite);
+        	BlockGraph bg = new BriefBlockGraph(ite.retrieveActiveBody());
+        	DominAnalysis lv =	new DominAnalysis(bg);
+        	ReachingDef ev = new ReachingDef(bg);
+        	Iterator<Block> blockIt = bg.iterator();
+        	String Loop = "";
+        	String overrepeatedStatements = "";
+        	while (blockIt.hasNext()) {
+    			Block s = blockIt.next();
+    			System.out.println("BB"+s.getIndexInMethod()+":");
+    			Iterator<Unit> itu = s.iterator();
+    			while(itu.hasNext()){
+    				Unit xtmp = itu.next();
+    				System.out.println(xtmp);
+    			}
+    			List<Block> lbb = s.getSuccs();
+    			System.out.println();
+    		    
+    			ArraySparseSet settemp = (ArraySparseSet) lv.getFlowAfter(s);
+				List<Block> w= settemp.toList();
+    			for(Block e: lbb){
+    				if(w.contains(e)){
+    					List<Block> pbloc = new ArrayList<Block>(); 
+    					pbloc.add(e);
+    					Queue<Block> qbloc = new LinkedList<Block>();
+    					qbloc.add(s);
+    					boolean fflag = false;
+    					if(s.getIndexInMethod() == e.getIndexInMethod()){fflag = true;}
+    					while(!qbloc.isEmpty() && !fflag){
+    						Block pe = qbloc.peek();
+    						qbloc.remove();
+    						pbloc.add(pe);
+    						List<Block> pre = pe.getPreds();
+    						for(Block ppe: pre){
+    							int u = ppe.getIndexInMethod();
+    							int flag = 0;
+    							for(Block wee: pbloc){
+    								int v = wee.getIndexInMethod();
+    								if(u == v){
+    									flag = 1;
+    								}
+    							}
+    							if(flag == 1){continue;}
+    							qbloc.add(ppe);
+    						}
+    					}
+
+    					int len = pbloc.size();
+    					for(int i = 0; i < len; ++ i){
+    						for(int j = i+1; j < len; ++ j){
+        						if(pbloc.get(i).getIndexInMethod() > pbloc.get(j).getIndexInMethod()){
+        							Block dtmp = pbloc.get(i);
+        							pbloc.set(i, pbloc.get(j));
+        							pbloc.set(j, dtmp);
+        						}
+        					}
+    					}
+    					
+    					FlowSet ass = new ArraySparseSet();
+    					FlowSet used = new ArraySparseSet();
+    					for(int i = 0; i < len; ++ i){
+    						Iterator<Unit> iunit = pbloc.get(i).iterator();
+    						while(iunit.hasNext()){
+    							Unit defloop = iunit.next();
+    							if(defloop.getDefBoxes().size()>0){ass.add(defloop);}
+    							if(defloop.getUseBoxes().size()>0){used.add(defloop);}
+    						}
+    					}
+    					FlowSet ess = (FlowSet)ev.getFlowBefore(pbloc.get(0));
+    					FlowSet ness =  new ArraySparseSet();
+    					ess.copy(ness);
+    					Iterator<Unit> entranceunits = ess.iterator();
+    					while(entranceunits.hasNext()){
+    						Unit essx = entranceunits.next(); 
+    						Iterator<Unit> wholeunits = ass.iterator();
+    						while(wholeunits.hasNext()){
+    							Unit assy = wholeunits.next();
+    							if(essx.toString().equals(assy.toString())){
+    								ness.remove(essx);
+    							}
+    						}
+    					}
+    					FlowSet ness2 =  new ArraySparseSet();
+    					entranceunits = ness.iterator();
+    					while(entranceunits.hasNext()){
+    						Unit essx = entranceunits.next();
+    						for (ValueBox box : essx.getDefBoxes()){
+    							ness2.add(box.getValue());
+    						}
+    					}
+    					entranceunits = used.iterator();
+    					
+    					while(entranceunits.hasNext()){
+    						Unit essx = entranceunits.next();
+    						int flag = 0;
+    						for (ValueBox box : essx.getUseBoxes()){
+    							Iterator<Value> yy = ness2.iterator();
+    							while(yy.hasNext()){
+    								Value y = yy.next();
     								if(y.toString().equals(box.getValue().toString())){
     									flag = 1;
     									break;
@@ -264,25 +368,24 @@ public class Main {
     							if(flag == 1) break;
     						}
     						if(flag == 1){
-    							System.out.println(essx);
     							res.add(essx);
+    							overrepeatedStatements += essx + "\n";
     						}
     					}
-
-    					for (Unit u : res)
-    					{
-    						System.out.println(u);
-    					}
-    					System.out.print("[");
+    					Loop += "[";
     					
     					for(int i = 0; i < len; ++ i){
-    						String x = (i == len-1)? "" : ",";
-    						System.out.print(pbloc.get(i).getIndexInMethod() + x);
+    						String x = (i == len-1)? "" : " ,";
+    						Loop += ("B"+pbloc.get(i).getIndexInMethod() + x);
     					}
-    					System.out.println("]");
+    					Loop += "]\n";
+    					
     				}
     			}
+    			
     		}
+        	System.out.println("Loops:\n"+ Loop);
+        	System.out.println("Statements:\n" + overrepeatedStatements);
         }
 	    //Static Analysis code
 	}
