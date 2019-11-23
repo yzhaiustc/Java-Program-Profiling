@@ -1,11 +1,12 @@
 public class Test4 extends java.lang.Object
 {
+    static long temporarycounter1522469;
 
     public static void main(java.lang.String[])
     {
         java.lang.String[] args;
         int x, temp$1;
-        long tmpLocal;
+        long tmp, tmpLong;
         java.io.PrintStream tmpRef;
 
         args := @parameter0: java.lang.String[];
@@ -14,6 +15,12 @@ public class Test4 extends java.lang.Object
 
      label1:
         temp$1 = x + 1;
+
+        tmp = <Test4: long temporarycounter1522469>;
+
+        tmp = tmp + 1L;
+
+        <Test4: long temporarycounter1522469> = tmp;
 
         x = temp$1;
 
@@ -24,17 +31,11 @@ public class Test4 extends java.lang.Object
      label2:
         tmpRef = <java.lang.System: java.io.PrintStream out>;
 
-        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("temp$0 = x % 4: ");
+        tmpLong = <Test4: long temporarycounter1522469>;
 
-        tmpLocal = <Test1: long UsedInst0ExeNum>;
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("Class: Test4 Method: main Statement: x = temp$1 : ");
 
-        virtualinvoke tmpRef.<java.io.PrintStream: void println(int)>(tmpLocal);
-
-        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("temp$1 = x / 4: ");
-
-        tmpLocal = <Test1: long UsedInst1ExeNum>;
-
-        virtualinvoke tmpRef.<java.io.PrintStream: void println(int)>(tmpLocal);
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(long)>(tmpLong);
 
         return;
     }

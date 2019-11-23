@@ -1,12 +1,12 @@
 public class Test1 extends java.lang.Object
 {
-    static long UsedInst0ExeNum;
-    static long UsedInst1ExeNum;
+    static long temporarycounter3308744;
+    static long temporarycounter5123396;
 
     public static void main(java.lang.String[])
     {
         java.lang.String[] args;
-        long tmpLocal;
+        long tmp, tmpLong;
         java.io.PrintStream tmpRef;
 
         args := @parameter0: java.lang.String[];
@@ -17,17 +17,19 @@ public class Test1 extends java.lang.Object
 
         tmpRef = <java.lang.System: java.io.PrintStream out>;
 
-        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("temp$0 = x % 4: ");
+        tmpLong = <Test1: long temporarycounter3308744>;
 
-        tmpLocal = <Test1: long UsedInst0ExeNum>;
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("Class: Test1 Method: func1 Statement: temp$0 = x % 4 : ");
 
-        virtualinvoke tmpRef.<java.io.PrintStream: void println(int)>(tmpLocal);
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(long)>(tmpLong);
 
-        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("temp$1 = x / 4: ");
+        tmpRef = <java.lang.System: java.io.PrintStream out>;
 
-        tmpLocal = <Test1: long UsedInst1ExeNum>;
+        tmpLong = <Test1: long temporarycounter5123396>;
 
-        virtualinvoke tmpRef.<java.io.PrintStream: void println(int)>(tmpLocal);
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("Class: Test1 Method: func1 Statement: temp$1 = x / 4 : ");
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(long)>(tmpLong);
 
         return;
     }
@@ -35,7 +37,7 @@ public class Test1 extends java.lang.Object
     public static void func1(int)
     {
         int x, temp$0, temp$1;
-        long tmpLocal;
+        long tmp;
 
         x := @parameter0: int;
 
@@ -44,26 +46,26 @@ public class Test1 extends java.lang.Object
         goto label3;
 
      label1:
-        tmpLocal = <Test1: long UsedInst0ExeNum>;
+        tmp = <Test1: long temporarycounter3308744>;
+
+        tmp = tmp + 1L;
+
+        <Test1: long temporarycounter3308744> = tmp;
 
         temp$0 = x % 4;
-
-        tmpLocal = tmpLocal + 1L;
-
-        <Test1: long UsedInst0ExeNum> = tmpLocal;
 
         if temp$0 != 0 goto label2;
 
         goto label3;
 
      label2:
-        tmpLocal = <Test1: long UsedInst1ExeNum>;
+        tmp = <Test1: long temporarycounter5123396>;
+
+        tmp = tmp + 1L;
+
+        <Test1: long temporarycounter5123396> = tmp;
 
         temp$1 = x / 4;
-
-        tmpLocal = tmpLocal + 1L;
-
-        <Test1: long UsedInst1ExeNum> = tmpLocal;
 
         x = temp$1;
 

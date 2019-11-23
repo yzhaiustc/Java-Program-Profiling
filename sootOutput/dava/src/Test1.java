@@ -2,26 +2,24 @@ import java.io.PrintStream;
 
 public class Test1
 {
-    static long UsedInst0ExeNum;
-    static long UsedInst1ExeNum;
+    static long temporarycounter3308744;
+    static long temporarycounter5123396;
 
     public static void main(String[]  r0)
     {
 
         long l0, l1;
-        PrintStream r1;
-        int i2, i3;
+        PrintStream r1, r2;
         Test1.func1(0);
         Test1.func1(95);
         r1 = System.out;
-        r1.print("temp$0 = x % 4: ");
-        l0 = UsedInst0ExeNum;
-        i2 = (int) l0;
-        r1.println(i2);
-        r1.print("temp$1 = x / 4: ");
-        l1 = UsedInst1ExeNum;
-        i3 = (int) l1;
-        r1.println(i3);
+        l0 = temporarycounter3308744;
+        r1.print("Class: Test1 Method: func1 Statement: temp$0 = x % 4 : ");
+        r1.println(l0);
+        r2 = System.out;
+        l1 = temporarycounter5123396;
+        r2.print("Class: Test1 Method: func1 Statement: temp$1 = x / 4 : ");
+        r2.println(l1);
     }
 
     public static void func1(int  i0)
@@ -34,20 +32,20 @@ public class Test1
         {
             while (true)
             {
-                l3 = UsedInst0ExeNum;
-                i1 = i0 % 4;
+                l3 = temporarycounter3308744;
                 l4 = l3 + 1L;
-                UsedInst0ExeNum = l4;
+                temporarycounter3308744 = l4;
+                i1 = i0 % 4;
 
                 if (i1 == 0)
                 {
                     break label_0;
                 }
 
-                l5 = UsedInst1ExeNum;
-                i2 = i0 / 4;
+                l5 = temporarycounter5123396;
                 l6 = l5 + 1L;
-                UsedInst1ExeNum = l6;
+                temporarycounter5123396 = l6;
+                i2 = i0 / 4;
                 i0 = i2;
             }
         }

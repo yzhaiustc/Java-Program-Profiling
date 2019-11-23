@@ -1,10 +1,14 @@
 public class Test3 extends java.lang.Object
 {
+    static long temporarycounter8979231;
+    static long temporarycounter3541439;
+    static long temporarycounter352157;
+    static long temporarycounter8188358;
 
     public static void main(java.lang.String[])
     {
         java.lang.String[] args;
-        long tmpLocal;
+        long tmp, tmpLong;
         java.io.PrintStream tmpRef;
 
         args := @parameter0: java.lang.String[];
@@ -15,21 +19,64 @@ public class Test3 extends java.lang.Object
 
         tmpRef = <java.lang.System: java.io.PrintStream out>;
 
+        tmpLong = <Test3: long temporarycounter8979231>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("Class: Test3 Method: func1 Statement: if x > 0 goto nop : ");
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(long)>(tmpLong);
+
+        tmpRef = <java.lang.System: java.io.PrintStream out>;
+
+        tmpLong = <Test3: long temporarycounter3541439>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("Class: Test3 Method: func1 Statement: temp$0 = x : ");
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(long)>(tmpLong);
+
+        tmpRef = <java.lang.System: java.io.PrintStream out>;
+
+        tmpLong = <Test3: long temporarycounter352157>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("Class: Test3 Method: func2 Statement: if x < 100 goto nop : ");
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(long)>(tmpLong);
+
+        tmpRef = <java.lang.System: java.io.PrintStream out>;
+
+        tmpLong = <Test3: long temporarycounter8188358>;
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void print(java.lang.String)>("Class: Test3 Method: func2 Statement: temp$0 = x : ");
+
+        virtualinvoke tmpRef.<java.io.PrintStream: void println(long)>(tmpLong);
+
         return;
     }
 
     public static void func1(int)
     {
         int x, temp$1;
+        long tmp;
 
         x := @parameter0: int;
 
      label1:
+        tmp = <Test3: long temporarycounter8979231>;
+
+        tmp = tmp + 1L;
+
+        <Test3: long temporarycounter8979231> = tmp;
+
         if x > 0 goto label2;
 
         goto label3;
 
      label2:
+        tmp = <Test3: long temporarycounter3541439>;
+
+        tmp = tmp + 1L;
+
+        <Test3: long temporarycounter3541439> = tmp;
+
         temp$1 = x + -1;
 
         x = temp$1;
@@ -43,15 +90,28 @@ public class Test3 extends java.lang.Object
     public static void func2(int)
     {
         int x, temp$1;
+        long tmp;
 
         x := @parameter0: int;
 
      label1:
+        tmp = <Test3: long temporarycounter352157>;
+
+        tmp = tmp + 1L;
+
+        <Test3: long temporarycounter352157> = tmp;
+
         if x < 100 goto label2;
 
         goto label3;
 
      label2:
+        tmp = <Test3: long temporarycounter8188358>;
+
+        tmp = tmp + 1L;
+
+        <Test3: long temporarycounter8188358> = tmp;
+
         temp$1 = x + 1;
 
         x = temp$1;
