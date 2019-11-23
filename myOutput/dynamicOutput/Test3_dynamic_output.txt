@@ -1,0 +1,4 @@
+Class: Test3 Method: func1 Statement: if x > 0 goto nop : 101
+Class: Test3 Method: func1 Statement: temp$0 = x : 100
+Class: Test3 Method: func2 Statement: if x < 100 goto nop : 91
+Class: Test3 Method: func2 Statement: temp$0 = x : 90

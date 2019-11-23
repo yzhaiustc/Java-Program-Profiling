@@ -1,0 +1,63 @@
+Method:<Test2: void main(java.lang.String[])>
+BB0:
+args := @parameter0: java.lang.String[]
+a = 20
+staticinvoke <Test2: void func1(int)>(a)
+return
+
+Loops:
+
+Statements:
+
+Method:<Test2: void func1(int)>
+BB0:
+x := @parameter0: int
+y = x
+z = x
+
+BB1:
+nop
+if y > 0 goto nop
+
+BB2:
+goto [?= nop]
+
+BB3:
+nop
+z = x
+
+BB4:
+nop
+if z > 0 goto nop
+
+BB5:
+goto [?= nop]
+
+BB6:
+nop
+temp$0 = z
+temp$1 = temp$0 + -1
+z = temp$1
+goto [?= nop]
+
+BB7:
+nop
+temp$2 = y
+temp$3 = temp$2 + -1
+y = temp$3
+goto [?= nop]
+
+BB8:
+nop
+return
+
+Loops:
+[B4 ,B6]
+[B1 ,B3 ,B4 ,B5 ,B6 ,B7]
+
+Statements:
+if z > 0 goto nop
+temp$0 = z
+if y > 0 goto nop
+z = x
+temp$2 = y

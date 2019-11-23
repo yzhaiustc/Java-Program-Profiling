@@ -1,0 +1,25 @@
+Method:<Test4: void main(java.lang.String[])>
+BB0:
+args := @parameter0: java.lang.String[]
+x = 10
+
+BB1:
+nop
+temp$0 = x
+temp$1 = temp$0 + 1
+x = temp$1
+nop
+if x < 40 goto nop
+
+BB2:
+goto [?= nop]
+
+BB3:
+nop
+return
+
+Loops:
+[B1]
+
+Statements:
+temp$0 = x

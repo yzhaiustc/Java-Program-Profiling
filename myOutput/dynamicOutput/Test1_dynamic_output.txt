@@ -1,0 +1,2 @@
+Class: Test1 Method: func1 Statement: temp$0 = x % 4 : 5
+Class: Test1 Method: func1 Statement: temp$1 = x / 4 : 4
